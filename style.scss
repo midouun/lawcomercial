@@ -1,5 +1,16 @@
-/* General Setup */
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+:root {
+    --primary-color: #1a237e; /* أزرق كحلي قانوني */
+    --secondary-color: #283593;
+    --accent-color: #ffb300; /* ذهبي */
+    --text-color: #333333;
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --success: #4caf50;
+    --error: #f44336;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
+    --font-main: 'Tajawal', sans-serif;
+}
 
 * {
     box-sizing: border-box;
@@ -8,254 +19,356 @@
 }
 
 body {
-    font-family: 'Tajawal', sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Header */
+/* Header Styles */
 .main-header {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.main-header .container {
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
-.main-header h1 {
+.logo {
     font-size: 1.5rem;
-}
-
-.main-header nav {
+    font-weight: 700;
     display: flex;
-    gap: 10px;
-}
-
-.main-header .nav-btn {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-.main-header .nav-btn:hover, 
-.main-header .nav-btn.active {
-    background-color: #3498db;
-    border-color: #3498db;
-}
-
-/* Layout */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.content-section {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-.content-section.active {
-    display: block;
-}
-
-/* Quiz Styles */
-.quiz-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.quiz-header h2 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.quiz-header .score-board {
-    font-weight: bold;
-    background: #3498db;
-    color: white;
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 20px;
-    margin-top: 10px;
-}
-
-.question-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
-    border-right: 4px solid #3498db;
-}
-
-.question-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
-
-.question-card .options {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.question-card .options button {
-    flex: 1;
-    padding: 10px;
-    border: 2px solid #ddd;
-    background: white;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.question-card .options button:hover:not(:disabled) {
-    background-color: #f0f0f0;
-}
-
-.question-card .options button.selected-true,
-.question-card .options button.selected-false {
-    background-color: #2c3e50;
-    color: white;
-    border-color: #2c3e50;
-}
-
-.question-card .justification {
-    background-color: #e8f6f3;
-    padding: 15px;
-    border-radius: 4px;
-    border: 1px solid #d4efdf;
-    display: none;
-}
-
-.question-card .justification.show {
-    display: block;
-}
-
-.question-card .justification.incorrect {
-    background-color: #fdedec;
-    border-color: #fadbd8;
-}
-
-.question-card .justification strong {
-    display: block;
-    margin-bottom: 5px;
-}
-
-/* Summary & Lock Screen */
-#lock-screen {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 50vh;
+    gap: 10px;
 }
 
-#lock-screen .lock-card {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
+.logo i { color: var(--accent-color); }
+
+.nav-tabs {
+    display: flex;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    border-radius: 30px;
 }
 
-#lock-screen .lock-card .icon {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-#lock-screen .lock-card input {
-    width: 100%;
-    padding: 10px;
-    margin: 15px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: inherit;
-    text-align: center;
-}
-
-#lock-screen .lock-card button {
-    width: 100%;
-    padding: 10px;
-    background-color: #3498db;
-    color: white;
+.nav-btn {
+    background: transparent;
     border: none;
-    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 20px;
+    border-radius: 25px;
     cursor: pointer;
     font-family: inherit;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-#lock-screen .lock-card button:hover {
-    background-color: #217dbb; /* Darker shade of accent color */
+.nav-btn:hover { color: white; background: rgba(255, 255, 255, 0.1); }
+
+.nav-btn.active {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-#lock-screen .lock-card .error {
-    color: #c0392b;
-    margin-top: 10px;
-    font-size: 0.9rem;
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
-.hidden {
-    display: none;
-}
+.content-section { display: none; animation: slideUp 0.5s ease; }
+.content-section.active { display: block; }
 
-.summary-content {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.summary-content h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #f4f7f6;
-    padding-bottom: 10px;
-}
-
-.summary-content .paper h3 {
-    color: #3498db;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-
-.summary-content .paper p {
-    margin-bottom: 10px;
-    text-align: justify;
-}
-
-.summary-content .paper ul {
-    margin-right: 20px;
-    margin-bottom: 15px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-    .main-header .container {
-        flex-direction: column;
-        gap: 10px;
-    }
+/* Quiz Styles */
+.quiz-dashboard {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-right: 5px solid var(--accent-color);
+}
+
+.progress-wrapper { flex: 1; }
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.progress-bar-bg {
+    background: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: var(--success);
+    height: 100%;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+.score-card {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.score-card .label { font-size: 0.8rem; color: #666; display: block; }
+.score-card .score-value { font-size: 1.5rem; font-weight: 800; color: var(--primary-color); }
+
+.question-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    transition: transform 0.2s;
+}
+
+.question-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    line-height: 1.5;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option-btn {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    background: var(--card-bg);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    background: #f5f7fa;
+}
+
+.option-btn.correct {
+    background-color: var(--success);
+    color: white;
+    border-color: var(--success);
+}
+
+.option-btn.wrong {
+    background-color: var(--error);
+    color: white;
+    border-color: var(--error);
+}
+
+.option-btn:disabled { cursor: default; opacity: 0.8; }
+
+.justification {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 8px;
+    border-right: 4px solid var(--success);
+    font-size: 0.95rem;
+    display: none;
+    animation: fadeIn 0.3s;
+}
+
+.justification.error-bg {
+    background: #ffebee;
+    border-color: var(--error);
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Lock Screen Styles */
+.lock-overlay {
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lock-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+}
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    background: #f0f2f5;
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.lock-card input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    text-align: center;
+    outline: none;
+}
+
+.lock-card input:focus { border-color: var(--accent-color); }
+
+.lock-card button {
+    padding: 12px 25px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.error-msg {
+    color: var(--error);
+    margin-top: 15px;
+    font-size: 0.9rem;
+    min-height: 20px;
+}
+
+.hidden { display: none !important; }
+
+/* Summary Styles (Grid) */
+.summary-intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.summary-intro h2 { color: var(--primary-color); margin-bottom: 10px; font-size: 2rem; }
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.summary-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s;
+    border: 1px solid #eee;
+}
+
+.summary-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+
+.card-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.card-body { padding: 20px; }
+
+.card-body h4 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 5px;
+}
+
+.card-body p, .card-body li {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 8px;
+    text-align: justify;
+}
+
+.card-body ul, .card-body ol { margin-right: 20px; margin-bottom: 15px; }
+
+.full-width { grid-column: 1 / -1; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+/* Footer */
+.main-footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .header-content { flex-direction: column; gap: 15px; }
+    .quiz-dashboard { flex-direction: column; align-items: stretch; text-align: center; }
+    .score-card { order: -1; }
+    .two-col { grid-template-columns: 1fr; }
+    .input-group { flex-direction: column; }
+    .options-grid { grid-template-columns: 1fr; }
 }
